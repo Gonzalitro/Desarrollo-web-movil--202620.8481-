@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulador de API - Juegos de Steam</title>
+</head>
+<body>
+    <h2>Catálogo de Juegos</h2>
+    <p>Haz clic en el botón para simular la llamada a la API y cargar el menú desplegable.</p>
+
+    <button type="button" onclick="cargarJuegos()">Cargar Catálogo</button>
+    <br><br>
+
+    <div>
+        <label for="cmbJuegos">Selecciona tu juego:</label>
+        <select id="cmbJuegos" name="cmbJuegos">
+            <option value="0">Esperando datos...</option>
+        </select>
+    </div>
+
+    <script src="producto.js"></script>
+</body>
+</html>
