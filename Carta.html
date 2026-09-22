@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="es"> 
+<head>
+    <title>Carta | Mr. Sandwich</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <!-- Librerías Bootstrap y Fuentes -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+
+    <!-- Conexión a tu archivo de estilos externo -->
+    <link rel="stylesheet" href="Estilo.css">
+</head>
+
+<body>
+    
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-sm navbar-custom navbar-dark">
+        <div class="container-fluid px-md-5">
+            
+            <!-- Logo -->
+            <a class="navbar-brand" href="index.html">
+                <img src="imagenes/logotrasparente.png" alt="Mr. Sandwich Logo" style="width:140px;">
+            </a>
+             
+            <!-- Links centrados -->
+            <ul class="navbar-nav mx-auto">
+                <li class="nav-item">
+                    <a class="nav-link nav-link-costum" href="Carta.html">Carta</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link nav-link-costum" href="index.html#empresa">La Empresa</a>
+                </li> 
+                <li class="nav-item">
+                    <a class="nav-link nav-link-costum" href="index.html#ubicacion">Delivery</a>
+                </li>
+            </ul>
+
+            <div class="d-flex gap-3">
+                <!-- Botón Usuario -->
+                <a href="#" class="btn btn-outline-minimal rounded-pill px-4" style="font-weight: 500;" data-bs-toggle="modal" data-bs-target="#loginModal">
+                    Mi Cuenta
+                </a>
+                 
+                <!-- Botón Carrito con ID conectado a JS y configurado para abrir el modal del carrito -->
+                <button type="button" id="btn-carrito-nav" class="btn btn-accent rounded-pill px-4 d-flex align-items-center gap-2" style="font-weight: 600;" data-bs-toggle="modal" data-bs-target="#carritoModal">
+                    <i class="bi bi-cart3" style="font-size: 1.2rem;"></i> Carrito (0)
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- PRODUCTOS -->
+    <div class="container-fluid productos-container">
+
+        <!-- SANDWICHES -->
+        <section class="seccion-menu" id="sandwiches">
+            <h2 class="titulo-seccion">Sandwiches</h2>
+            <div class="row fila-productos">
+
+                <!-- Sandwich 1 -->
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="producto-card">
+                        <div class="producto-info">
+                            <h5>Sandwich Umami: 6.500</h5>
+                            <p>Sandwich tocino, queso, teriyaki, cebolla caramelizada, mayo de sesamo.</p>
+                        </div>
+                        <div class="producto-imagen">
+                            <img src="imagenes/BURGER-1.png" alt="Sandwich 1">
+                            <div class="producto-acciones">
+                                <button type="button" class="btn btn-primary producto-carrito-btn" aria-label="Agregar al carrito">+</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sandwich 2 -->
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="producto-card">
+                        <div class="producto-info">
+                            <h5>Sandwich Tropical: 6.500</h5>
+                            <p>Sandwich de Piña a la parilla, cebolla morada encurtida, queso cheddar, salsa de mango picante.</p>
+                        </div>
+                        <div class="producto-imagen">
+                            <img src="imagenes/BURGER-2.png" alt="Sandwich 2">
+                            <div class="producto-acciones">
+                                <button type="button" class="btn btn-primary producto-carrito-btn" aria-label="Agregar al carrito">+</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sandwich 3 -->
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="producto-card">
+                        <div class="producto-info">
+                            <h5>Sandwich Mexicana: 6.500</h5>
+                            <p>Sandwich de Guacamole con jalapeños, queso cheddar, tortilla crujiente y salsa picante.</p>
+                        </div>
+                        <div class="producto-imagen">
+                            <img src="imagenes/BURGER-3.png" alt="Sandwich 3">
+                            <div class="producto-acciones">
+                                <button type="button" class="btn btn-primary producto-carrito-btn" aria-label="Agregar al carrito">+</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sandwich 4 -->
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="producto-card">
+                        <div class="producto-info">
+                            <h5>Sandwich Caribeña: 6.500</h5>
+                            <p>Sandwich de piña a la parrilla, tocino, queso suizo, salsa de coco y cilantro fresco.</p>
+                        </div>
+                        <div class="producto-imagen">
+                            <img src="imagenes/BURGER-4.png" alt="Sandwich 4">
+                            <div class="producto-acciones">
+                                <button type="button" class="btn btn-primary producto-carrito-btn" aria-label="Agregar al carrito">+</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sandwich 5 -->
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="producto-card">
+                        <div class="producto-info">
+                            <h5>Sandwich mediterranea: 6.500</h5>
+                            <p>Sandwich de queso feta, pimientos asados, recula, salsa de aceitunas y oregano.</p>
+                        </div>
+                        <div class="producto-imagen">
+                            <img src="imagenes/BURGER-5.png" alt="Sandwich 5">
+                            <div class="producto-acciones">
+                                <button type="button" class="btn btn-primary producto-carrito-btn" aria-label="Agregar al carrito">+</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- WRAPS -->
+        <section class="seccion-menu" id="wraps">
+            <h2 class="titulo-seccion">Wraps</h2>
+            <div class="row fila-productos">
+
+                <!-- Wrap 1 -->
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="producto-card">
+                        <div class="producto-info">
+                            <h5>Wrap Carne asada: 7.500</h5>
+                            <p>Fajita rellena de salsa ranch con carne de res asada, tomate y cebolleta.</p>
+                        </div>
+                        <div class="producto-imagen">
+                            <img src="imagenes/SHAW-1.png" alt="Wrap 1">
+                            <div class="producto-acciones">
+                                <button type="button" class="btn btn-primary producto-carrito-btn" aria-label="Agregar al carrito">+</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Wrap 2 -->
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="producto-card">
+                        <div class="producto-info">
+                            <h5>Wrap Pollo a la parrilla: 7.500</h5>
+                            <p>Fajita rellena de pollo a la parrilla, salsa ranch, tomate y cebolleta.</p>
+                        </div>
+                        <div class="producto-imagen">
+                            <img src="imagenes/SHAW-2.png" alt="Wrap 2">
+                            <div class="producto-acciones">
+                                <button type="button" class="btn btn-primary producto-carrito-btn" aria-label="Agregar al carrito">+</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Wrap 3 -->
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="producto-card">
+                        <div class="producto-info">
+                            <h5>Wrap Vegetariano: 7.900</h5>
+                            <p>Fajita rellena de Not meat con salsa rach, queso ranco, tomate y cebolleta.</p>
+                        </div>
+                        <div class="producto-imagen">
+                            <img src="imagenes/SHAW-3.png" alt="Wrap 3">
+                            <div class="producto-acciones">
+                                <button type="button" class="btn btn-primary producto-carrito-btn" aria-label="Agregar al carrito">+</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Wrap 4 -->
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="producto-card">
+                        <div class="producto-info">
+                            <h5>Wrap Vegetales asados: 7.900</h5>
+                            <p>Fajita rellena con palta, tomate seco rehidratado, pimiento rojo asado y salsa rach.</p>
+                        </div>
+                        <div class="producto-imagen">
+                            <img src="imagenes/SHAW-4.png" alt="Wrap 4">
+                            <div class="producto-acciones">
+                                <button type="button" class="btn btn-primary producto-carrito-btn" aria-label="Agregar al carrito">+</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Wrap 5 -->
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="producto-card">
+                        <div class="producto-info">
+                            <h5>Wrap Mix: 10.500</h5>
+                            <p>Fajita rellena con palta, carne de res asada, pollo al curry y salsa ranch.</p>
+                        </div>
+                        <div class="producto-imagen">
+                            <img src="imagenes/SHAW-5.png" alt="Wrap 5">
+                            <div class="producto-acciones">
+                                <button type="button" class="btn btn-primary producto-carrito-btn" aria-label="Agregar al carrito">+</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- EXTRAS -->
+        <section class="seccion-menu" id="extras">
+            <h2 class="titulo-seccion">Extras</h2>
+            <div class="row fila-productos">
+
+                <!-- Extra 1 -->
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="producto-card">
+                        <div class="producto-info">
+                            <h5>Papas fritas: 8.500</h5>
+                            <p>Papas fritas con salsa picante.</p>
+                        </div>
+                        <div class="producto-imagen">
+                            <img src="imagenes/EXTRA-1.png" alt="EXTRA1">
+                            <div class="producto-acciones">
+                                <button type="button" class="btn btn-primary producto-carrito-btn" aria-label="Agregar al carrito">+</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Extra 2 -->
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="producto-card">
+                        <div class="producto-info">
+                            <h5>Nuggets: 5.500</h5>
+                            <p>Nuggets de pollo crujientes.</p>
+                        </div>
+                        <div class="producto-imagen">
+                            <img src="imagenes/EXTRA-2.png" alt="EXTRA2">
+                            <div class="producto-acciones">
+                                <button type="button" class="btn btn-primary producto-carrito-btn" aria-label="Agregar al carrito">+</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Extra 3 -->
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="producto-card">
+                        <div class="producto-info">
+                            <h5>Aros de cebolla: 4.990</h5>
+                            <p>10 aros de cebolla empanizados.</p>
+                        </div>
+                        <div class="producto-imagen">
+                            <img src="imagenes/EXTRA-3.png" alt="EXTRA3">
+                            <div class="producto-acciones">
+                                <button type="button" class="btn btn-primary producto-carrito-btn" aria-label="Agregar al carrito">+</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- BEBESTIBLES -->
+        <section class="seccion-menu" id="bebestibles">
+            <h2 class="titulo-seccion">Bebestibles</h2>
+            <div class="row fila-productos">
+
+                <!-- Bebestible 1 -->
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="producto-card">
+                        <div class="producto-info">
+                            <h5>Cocacola en lata: 2500</h5>
+                            <p>Bebida Cocacola en lata 350ml.</p>
+                        </div>
+                        <div class="producto-imagen">
+                            <img src="imagenes/BEBIDA-1.png" alt="BEBIDA1">
+                            <div class="producto-acciones">
+                                <button type="button" class="btn btn-primary producto-carrito-btn" aria-label="Agregar al carrito">+</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bebestible 2 -->
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="producto-card">
+                        <div class="producto-info">
+                            <h5>Sprite en lata: 2500</h5>
+                            <p>Sprite en lata 350ml.</p>
+                        </div>
+                        <div class="producto-imagen">
+                            <img src="imagenes/BEBIDA-2.png" alt="BEBIDA2">
+                            <div class="producto-acciones">
+                                <button type="button" class="btn btn-primary producto-carrito-btn" aria-label="Agregar al carrito">+</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bebestible 3 -->
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="producto-card">
+                        <div class="producto-info">
+                            <h5>Fanta en lata: 2500</h5>
+                            <p>Fanta naranja en lata 350ml.</p>
+                        </div>
+                        <div class="producto-imagen">
+                            <img src="imagenes/BEBIDA-3.png" alt="BEBIDA3">
+                            <div class="producto-acciones">
+                                <button type="button" class="btn btn-primary producto-carrito-btn" aria-label="Agregar al carrito">+</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bebestible 4 -->
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="producto-card">
+                        <div class="producto-info">
+                            <h5>Cerveza blanca: 3500</h5>
+                            <p>Cerveza de la casa artesanal.</p>
+                        </div>
+                        <div class="producto-imagen">
+                            <img src="imagenes/BEBIDA-4.png" alt="BEBIDA4">
+                            <div class="producto-acciones">
+                                <button type="button" class="btn btn-primary producto-carrito-btn" aria-label="Agregar al carrito">+</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </div>
+
+    <!-- FOOTER -->
+    <footer style="background-color: #0a0a0a; border-top: 1px solid #1f1f1f; padding: 70px 0 30px 0;">
+        <div class="container px-md-5">
+            <div class="row">
+                <div class="col-md-3 mb-5 mb-md-0 text-center text-md-start">
+                    <img src="imagenes/logotrasparente.png" alt="Mr. Sandwich Logo" style="width: 140px; opacity: 0.8;">
+                </div>
+
+                <div class="col-md-3 mb-4 mb-md-0">
+                    <h5 style="color: #ffffff; font-weight: 700; font-size: 16px; margin-bottom: 20px;">Conócenos</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="#" class="footer-link">Trabaja con nosotros</a></li>
+                        <li class="mb-2"><a href="#" class="footer-link">Términos y condiciones</a></li>
+                        <li class="mb-2"><a href="#" class="footer-link">Política de privacidad</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-md-3 mb-4 mb-md-0">
+                    <h5 style="color: #ffffff; font-weight: 700; font-size: 16px; margin-bottom: 20px;">Redes sociales</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="#" class="footer-link">Instagram</a></li>
+                        <li class="mb-2"><a href="#" class="footer-link">Facebook</a></li>
+                        <li class="mb-2"><a href="#" class="footer-link">TikTok</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-md-3">
+                    <h5 style="color: #ffffff; font-weight: 700; font-size: 16px; margin-bottom: 20px;">Mi cuenta</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="Carta.html" class="footer-link">Pedir</a></li>
+                        <li class="mb-2"><a href="#" class="footer-link" data-bs-toggle="modal" data-bs-target="#loginModal">Iniciar sesión</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="row mt-5 pt-4" style="border-top: 1px solid #1f1f1f;">
+                <div class="col-12 text-center">
+                    <p style="color: #555555; font-size: 13px; margin: 0; font-weight: 300;">&copy; 2026 Mr. Sandwich. Todos los derechos reservados.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- MODAL DE LOGIN -->
+    <div class="modal fade" id="loginModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content" style="background-color: #1a1a1a; border: 1px solid #333;">
+                <div class="modal-header" style="border-bottom: 1px solid #333;">
+                    <h5 class="modal-title" style="color: #fff; font-weight: 700;">Mr. Sandwich</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-4">
+                    <ul class="nav nav-pills mb-4 justify-content-center" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active rounded-pill px-4" data-bs-toggle="tab" data-bs-target="#tab-iniciar" type="button" role="tab" style="color: #b0b0b0; font-weight: 500;">Iniciar Sesión</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link rounded-pill px-4" data-bs-toggle="tab" data-bs-target="#tab-crear" type="button" role="tab" style="color: #b0b0b0; font-weight: 500;">Crear Cuenta</button>
+                        </li>
+                    </ul>
+
+                    <div class="tab-content">
+                        <div class="tab-pane fade show active" id="tab-iniciar" role="tabpanel">
+                            <form>
+                                <div class="mb-3">
+                                    <label class="form-label" style="color: #b0b0b0;">Correo electrónico</label>
+                                    <input type="email" class="form-control bg-dark text-white border-secondary" placeholder="ejemplo@correo.com">
+                                </div>
+                                <div class="mb-4">
+                                    <label class="form-label" style="color: #b0b0b0;">Contraseña</label>
+                                    <input type="password" class="form-control bg-dark text-white border-secondary" placeholder="********">
+                                </div>
+                                <button type="button" class="btn btn-accent w-100 rounded-pill py-2" data-bs-dismiss="modal" style="font-weight: 600;">Entrar</button>
+                            </form>
+                        </div>
+
+                        <div class="tab-pane fade" id="tab-crear" role="tabpanel">
+                            <form>
+                                <div class="mb-3">
+                                    <label class="form-label" style="color: #b0b0b0;">Nombre de usuario</label>
+                                    <input type="text" class="form-control bg-dark text-white border-secondary" placeholder="JuanPerez">
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label" style="color: #b0b0b0;">Correo electrónico</label>
+                                    <input type="email" class="form-control bg-dark text-white border-secondary" placeholder="ejemplo@correo.com">
+                                </div>
+                                <div class="mb-4">
+                                    <label class="form-label" style="color: #b0b0b0;">Contraseña</label>
+                                    <input type="password" class="form-control bg-dark text-white border-secondary" placeholder="********">
+                                </div>
+                                <button type="button" class="btn btn-outline-minimal w-100 rounded-pill py-2" data-bs-dismiss="modal" style="font-weight: 600;">Registrarme</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL DEL CARRITO (¡AQUÍ ESTABA EL PROBLEMA, ESTO FALTABA!) -->
+    <div class="modal fade" id="carritoModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content" style="background-color: #1a1a1a; border: 1px solid #333; color: white;">
+                <div class="modal-header" style="border-bottom: 1px solid #333;">
+                    <h5 class="modal-title" style="font-weight: 700;">Tu Pedido</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-4">
+                    <!-- Aquí el JS inyectará los productos -->
+                    <div id="carrito-lista"></div>
+                    
+                    <hr style="border-color: #555; margin-top: 20px;">
+                    
+                    <!-- Aquí el JS inyectará el Total -->
+                    <div class="d-flex justify-content-between align-items-center fs-5 mt-3">
+                        <strong style="color: #b0b0b0;">Total a pagar:</strong>
+                        <strong id="carrito-total" style="color: #fff; font-size: 1.5rem;">$0</strong>
+                    </div>
+                </div>
+                <div class="modal-footer" style="border-top: 1px solid #333;">
+                    <button type="button" class="btn btn-outline-minimal rounded-pill" data-bs-dismiss="modal">Seguir comprando</button>
+                    <button type="button" class="btn btn-accent rounded-pill px-4">Ir a Pagar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Conexión de Javascript interactivo -->
+    <script src="app.js"></script>
+</body>
+</html>
