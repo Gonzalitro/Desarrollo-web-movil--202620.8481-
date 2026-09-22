@@ -110,3 +110,16 @@ async def eliminar_item(item_id: str):
     if res.delete_count == 0:
         raise HTTPException(404, "item no encontrado")
     return None
+"""
+    Elimina un ítem de la base de datos a partir de su ID.
+
+    Parámetros:
+    - item_id (str): Identificador único del ítem en formato ObjectId de MongoDB.
+
+    Retorna:
+    - None si la eliminación fue exitosa.
+
+    Excepciones:
+    - 400 Bad Request: Si el item_id proporcionado no tiene un formato válido de ObjectId.
+    - 404 Not Found: Si no se encuentra ningún ítem con el ID especificado.
+    """
