@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="es"> 
+<head>
+    <title>Bienvenido | Mr. Sandwich</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <!-- Bootstrap y Fuentes -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    
+    <!-- 1. CONEXIÓN AL CSS EXTERNO (Requisito de entrega) -->
+    <link rel="stylesheet" href="Estilo.css">
+</head>
+<body>
+    
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-sm navbar-custom navbar-dark">
+        <div class="container-fluid px-md-5">           
+            
+            <!-- Logo con enlace corregido a .html -->
+            <a class="navbar-brand" href="index.html">
+                <img src="imagenes/logotrasparente.png" alt="Mr. Sandwich Logo" style="width:140px;">
+            </a>
+             
+            <!-- Links centrados corregidos a .html -->
+            <ul class="navbar-nav mx-auto">
+                <li class="nav-item">
+                    <a class="nav-link nav-link-costum" href="Carta.html">Carta</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link nav-link-costum" href="#empresa">La Empresa</a>
+                </li> 
+                <li class="nav-item">
+                    <a class="nav-link nav-link-costum" href="#ubicacion">Delivery</a>
+                </li>
+            </ul>
+
+            <div class="d-flex gap-3">
+                <!-- Botón Usuario -->
+                <a href="#" class="btn btn-outline-minimal rounded-pill px-4" style="font-weight: 500;" data-bs-toggle="modal" data-bs-target="#loginModal">
+                    Mi Cuenta
+                </a>
+                 
+                <!-- 2. BOTÓN CARRITO CON SU ID (Para que funcione el JS) y atributos para abrir el modal -->
+                <button type="button" id="btn-carrito-nav" class="btn btn-accent rounded-pill px-4 d-flex align-items-center gap-2" style="font-weight: 600;" data-bs-toggle="modal" data-bs-target="#carritoModal">
+                    <i class="bi bi-cart3" style="font-size: 1.2rem;"></i> Carrito (0)
+                </button>
+            </div>
+                  
+        </div>
+    </nav>
+
+    <!-- Carrusel Principal -->
+    <div id="carruselMrSandwich" class="carousel slide" data-bs-ride="carousel" style="margin-bottom: 80px;">
+        
+        <div class="carousel-indicators" style="bottom: -40px;">
+            <button type="button" data-bs-target="#carruselMrSandwich" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carruselMrSandwich" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        </div>
+
+        <div class="carousel-inner" style="padding: 80px 0;">
+            
+            <!-- Slide 1: Shawarma -->
+            <div class="carousel-item active">
+                <div class="container">
+                    <div class="row align-items-center">
+                        <div class="col-md-6 pe-md-5">
+                            <h2 style="font-weight: 700; font-size: 42px; color: #ffffff;">Shawarmas especial de la casa</h2>
+                            <p class="mt-4" style="font-size: 16px; line-height: 1.8; color: #b0b0b0; font-weight: 300;">
+                                Disfruta de nuestro producto estrella. Finas láminas de carne de res asada, marinadas con nuestras especias secretas, acompañadas de tomates frescos y bañadas en una cremosa salsa de ajo artesanal. Todo envuelto a la perfección en un pan pita suave y ligeramente tostado.
+                            </p>
+                        </div>
+                        <div class="col-md-6 text-center mt-5 mt-md-0">
+                            <img src="imagenes/SHAW-1.png" alt="Shawarma especial" class="img-fluid rounded mb-4" style="max-height: 350px; object-fit: cover;">
+                            <div class="mb-4">
+                                <span style="color: #e40101; font-size: 26px; letter-spacing: 3px;">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+                                <span class="ms-2" style="font-size: 14px; font-weight: 400; color: #888888;">(5.0)</span>
+                            </div>
+                            <a href="Carta.html" class="btn btn-accent btn-lg rounded-pill px-5 py-2" style="font-weight: 600; letter-spacing: 1px;">Pídela aquí</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Slide 2: Sándwich de la Casa -->
+            <div class="carousel-item">
+                <div class="container">
+                    <div class="row align-items-center">
+                        <div class="col-md-6 pe-md-5">
+                            <h2 style="font-weight: 700; font-size: 42px; color: #ffffff;">El Sándwich de la Casa</h2>
+                            <p class="mt-4" style="font-size: 16px; line-height: 1.8; color: #b0b0b0; font-weight: 300;">
+                                Nuestro clásico imperdible. Una generosa porción de carne mechada cocinada a fuego lento, fundida con queso gauda, cebolla caramelizada y coronada con nuestra mayonesa casera al ajo. Todo servido en un pan frica artesanal recién horneado que atrapará todos tus sentidos.
+                            </p>
+                        </div>
+                        <div class="col-md-6 text-center mt-5 mt-md-0">
+                            <img src="imagenes/BURGER-1.png" alt="Sándwich de la casa" class="img-fluid rounded mb-4" style="max-height: 350px; object-fit: cover;">
+                            <div class="mb-4">
+                                <span style="color: #e40101; font-size: 26px; letter-spacing: 3px;">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+                                <span class="ms-2" style="font-size: 14px; font-weight: 400; color: #888888;">(4.9)</span>
+                            </div>
+                            <a href="Carta.html" class="btn btn-accent btn-lg rounded-pill px-5 py-2" style="font-weight: 600; letter-spacing: 1px;">Pídelo aquí</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <button class="carousel-control-prev" type="button" data-bs-target="#carruselMrSandwich" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Anterior</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carruselMrSandwich" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Siguiente</span>
+        </button>
+    </div>
+
+    <!-- Conócenos -->
+    <div id="empresa" class="container" style="padding-top: 80px; padding-bottom: 120px;">
+        <div class="row align-items-center">
+            <div class="col-md-6 pe-md-5">
+                <h2 style="font-weight: 700; color: #ffffff; font-size: 36px;">Conócenos</h2>
+                <p style="color: #b0b0b0; line-height: 1.8; font-weight: 300; margin-top: 20px; margin-bottom: 30px;">
+                    Desde hace 25 años, Mr. Sandwich se ha convertido en un emblema de excelencia y tradición en Maipú. 
+                    Lo que comenzó como un pequeño sueño familiar buscando elevar los sabores locales, hoy es un clásico indiscutible. 
+                    Ven a disfrutar a nuestro histórico local en la céntrica Avenida Pajaritos, donde seguimos preparando cada receta con la misma pasión del primer día 
+                    para brindarte una experiencia verdaderamente gourmet.
+                </p>
+                <a href="Carta.html" class="btn btn-outline-minimal rounded-pill px-4 py-2" style="font-weight: 500; letter-spacing: 1px;">¡Pide Ya!</a>
+            </div>
+            
+            <div class="col-md-6 mt-5 mt-md-0">
+                <div id="carruselConocenos" class="carousel slide carousel-fade shadow-lg rounded" data-bs-ride="carousel">
+                    <div class="carousel-inner rounded">
+                        <div class="carousel-item active" data-bs-interval="3000">
+                            <img src="imagenes/local.png" class="d-block w-100" alt="Fachada del local en Maipú" style="height: 350px; object-fit: cover;">
+                        </div>
+                        <div class="carousel-item" data-bs-interval="3000">
+                            <img src="imagenes/atencion.png" class="d-block w-100" alt="Interior del restaurante" style="height: 350px; object-fit: cover;">
+                        </div>
+                        <div class="carousel-item" data-bs-interval="3000">
+                            <img src="imagenes/clientes.png" class="d-block w-100" alt="Nuestros sándwiches" style="height: 350px; object-fit: cover;">
+                        </div>
+                    </div>
+
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carruselConocenos" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Anterior</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carruselConocenos" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Siguiente</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Ubicación y Delivery -->
+    <div id="ubicacion" class="container" style="padding-top: 40px; padding-bottom: 120px;">
+        <hr style="border-color: #2a2a2a; margin-bottom: 80px;">
+        <div class="row align-items-center">
+            <div class="col-md-6 pe-md-5">
+                <h2 style="font-weight: 700; color: #ffffff; font-size: 36px;">Ubicación y Delivery</h2>
+                <p style="color: #b0b0b0; line-height: 1.8; font-weight: 300; margin-top: 20px; margin-bottom: 15px;">
+                    Te esperamos en nuestro histórico local ubicado en el corazón de Maipú, sobre Avenida Pajaritos. Un ambiente diseñado para disfrutar de la verdadera experiencia sandwichera.
+                </p>
+                <p style="color: #b0b0b0; line-height: 1.8; font-weight: 300; margin-bottom: 35px;">
+                    ¿Día de sillón y películas? Lleva nuestra calidad gourmet a tu puerta. Hemos perfeccionado nuestro empaque para asegurar que tus ingredientes viajen seguros y tu pedido llegue con la misma temperatura, frescura y excelencia que si estuvieras en nuestra barra.
+                </p>
+                <a href="https://www.ubereats.com" target="_blank" class="btn btn-accent rounded-pill px-4 py-2 d-inline-flex align-items-center gap-2" style="font-weight: 600; letter-spacing: 1px;">
+                    <i class="bi bi-bicycle" style="font-size: 1.2rem;"></i> Pedir por Uber Eats
+                </a>
+            </div>
+            <div class="col-md-6 text-center mt-5 mt-md-0">
+                <img src="imagenes/delevery.png" alt="Delivery Mr. Sandwich" class="img-fluid rounded" style="max-height: 400px; object-fit: cover; opacity: 0.9;">
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL DEL CARRITO (¡NUEVO, AHORA FUNCIONARÁ!) -->
+    <div class="modal fade" id="carritoModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content" style="background-color: #1a1a1a; border: 1px solid #333; color: white;">
+                <div class="modal-header" style="border-bottom: 1px solid #333;">
+                    <h5 class="modal-title" style="font-weight: 700;">Tu Pedido</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-4">
+                    <!-- Aquí el JS inyectará los productos -->
+                    <div id="carrito-lista"></div>
+                    
+                    <hr style="border-color: #555; margin-top: 20px;">
+                    
+                    <!-- Aquí el JS inyectará el Total -->
+                    <div class="d-flex justify-content-between align-items-center fs-5 mt-3">
+                        <strong style="color: #b0b0b0;">Total a pagar:</strong>
+                        <strong id="carrito-total" style="color: #fff; font-size: 1.5rem;">$0</strong>
+                    </div>
+                </div>
+                <div class="modal-footer" style="border-top: 1px solid #333;">
+                    <button type="button" class="btn btn-outline-minimal rounded-pill" data-bs-dismiss="modal">Seguir explorando</button>
+                    <a href="Carta.html" class="btn btn-accent rounded-pill px-4">Ir a Pagar</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Login -->
+    <div class="modal fade" id="loginModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content" style="background-color: #1a1a1a; border: 1px solid #333;">
+                <div class="modal-header" style="border-bottom: 1px solid #333;">
+                    <h5 class="modal-title" style="color: #fff; font-weight: 700;">Mr. Sandwich</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-4">
+                    <ul class="nav nav-pills mb-4 justify-content-center" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active rounded-pill px-4" data-bs-toggle="tab" data-bs-target="#tab-iniciar" type="button" role="tab" style="color: #b0b0b0; font-weight: 500;">Iniciar Sesión</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link rounded-pill px-4" data-bs-toggle="tab" data-bs-target="#tab-crear" type="button" role="tab" style="color: #b0b0b0; font-weight: 500;">Crear Cuenta</button>
+                        </li>
+                    </ul>
+                    <div class="tab-content">
+                        <div class="tab-pane fade show active" id="tab-iniciar" role="tabpanel">
+                            <form>
+                                <div class="mb-3">
+                                    <label class="form-label" style="color: #b0b0b0;">Correo electrónico</label>
+                                    <input type="email" class="form-control bg-dark text-white border-secondary" placeholder="ejemplo@correo.com">
+                                </div>
+                                <div class="mb-4">
+                                    <label class="form-label" style="color: #b0b0b0;">Contraseña</label>
+                                    <input type="password" class="form-control bg-dark text-white border-secondary" placeholder="********">
+                                </div>
+                                <button type="button" class="btn btn-accent w-100 rounded-pill py-2" data-bs-dismiss="modal" style="font-weight: 600;">Entrar</button>
+                            </form>
+                        </div>
+                        <div class="tab-pane fade" id="tab-crear" role="tabpanel">
+                            <form>
+                                <div class="mb-3">
+                                    <label class="form-label" style="color: #b0b0b0;">Nombre de usuario</label>
+                                    <input type="text" class="form-control bg-dark text-white border-secondary" placeholder="JuanPerez">
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label" style="color: #b0b0b0;">Correo electrónico</label>
+                                    <input type="email" class="form-control bg-dark text-white border-secondary" placeholder="ejemplo@correo.com">
+                                </div>
+                                <div class="mb-4">
+                                    <label class="form-label" style="color: #b0b0b0;">Contraseña</label>
+                                    <input type="password" class="form-control bg-dark text-white border-secondary" placeholder="********">
+                                </div>
+                                <button type="button" class="btn btn-outline-minimal w-100 rounded-pill py-2" data-bs-dismiss="modal" style="font-weight: 600;">Registrarme</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer style="background-color: #0a0a0a; border-top: 1px solid #1f1f1f; padding: 70px 0 30px 0;">
+        <div class="container px-md-5">
+            <div class="row">
+                <div class="col-md-3 mb-5 mb-md-0 text-center text-md-start">
+                    <img src="imagenes/logotrasparente.png" alt="Mr. Sandwich Logo" style="width: 140px; opacity: 0.8;">
+                </div>
+                <div class="col-md-3 mb-4 mb-md-0">
+                    <h5 style="color: #ffffff; font-weight: 700; font-size: 16px; margin-bottom: 20px;">Conócenos</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="#" class="footer-link">Trabaja con nosotros</a></li>
+                        <li class="mb-2"><a href="#" class="footer-link">Términos y condiciones</a></li>
+                        <li class="mb-2"><a href="#" class="footer-link">Política de privacidad</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3 mb-4 mb-md-0">
+                    <h5 style="color: #ffffff; font-weight: 700; font-size: 16px; margin-bottom: 20px;">Redes sociales</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="#" class="footer-link">Instagram</a></li>
+                        <li class="mb-2"><a href="#" class="footer-link">Facebook</a></li>
+                        <li class="mb-2"><a href="#" class="footer-link">TikTok</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h5 style="color: #ffffff; font-weight: 700; font-size: 16px; margin-bottom: 20px;">Mi cuenta</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="Carta.html" class="footer-link">Pedir</a></li>
+                        <li class="mb-2"><a href="#" class="footer-link" data-bs-toggle="modal" data-bs-target="#loginModal">Iniciar sesión</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row mt-5 pt-4" style="border-top: 1px solid #1f1f1f;">
+                <div class="col-12 text-center">
+                    <p style="color: #555555; font-size: 13px; margin: 0; font-weight: 300;">&copy; 2026 Mr. Sandwich. Todos los derechos reservados.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 3. CONEXIÓN AL JAVASCRIPT EXTERNO (Requisito de entrega) -->
+    <script src="app.js"></script>
+</body>
+</html>
