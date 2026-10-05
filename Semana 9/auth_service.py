@@ -79,3 +79,38 @@ def health():
         "status": "OK",
         "service": "Authentication Service"
     }
+
+@app.post("/introspect")
+def introspect(
+    request: IntrospectionRequest,
+    x_gateway_auth_secret: str = Header(default="")
+):
+    # Validar que quien consulta tiene el secreto del Gateway
+    if not secrets.compare_digest(x_gateway_auth_secret, AUTH_INTROSPECTION_SECRET):
+        raise HTTPException(status_code=403, detail="Gateway no autorizado")
+
+    # Buscar si el token existe en las sesiones activas
+    session = SESSIONS.get(request.token)
+
+    if session is None:
+        return {"active": False}
+
+    # Validar si el token ya expiró por tiempo
+    if datetime.now(timezone.utc) > datetime.fromisoformat(session["expires_at"]):
+        SESSIONS.pop(request.token, None) # Lo elimina si ya expiró
+        return {"active": False}
+
+    # Si todo está correcto, devuelve los datos de la sesión
+    return {
+        "active": True,
+        "user_id": session["user_id"],
+        "username": session["username"],
+        "roles": session["roles"],
+        "expires_at": session["expires_at"]
+    }
+
+@app.post("/logout")
+def logout(request: IntrospectionRequest):
+    # Eliminar la sesión usando pop
+    SESSIONS.pop(request.token, None)
+    return {"message": "Sesión finalizada"}
