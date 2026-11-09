@@ -152,4 +152,184 @@ workspace "Mr. Sandwich" "Modelo C4 de la plataforma web y backend de Mr. Sandwi
         }
     }
 
-    
+    views {
+        systemContext mrSandwich "C1_Contexto" "Contexto general del proyecto Mr. Sandwich." {
+            title "C1 - Contexto de Mr. Sandwich"
+            include *
+            autoLayout lr
+        }
+
+        container mrSandwich "C2_Contenedores" "Frontend, backend FastAPI y base de datos MongoDB." {
+            title "C2 - Contenedores de Mr. Sandwich"
+            include *
+            autoLayout lr
+        }
+
+        component mrSandwich.frontend "C3_Frontend" "Estructura interna del frontend estático." {
+            title "C3 - Componentes del Frontend"
+            include *
+            autoLayout lr
+        }
+
+        component mrSandwich.backend "C3_Backend" "Routers REST, montaje GraphQL y documentación de la única aplicación FastAPI." {
+            title "C3 - Componentes del Backend FastAPI"
+            include *
+            autoLayout lr
+        }
+
+        dynamic mrSandwich "D01_Carrito_Frontend" "Comportamiento local del catálogo y carrito en Carta.html y app.js. No interviene el backend." {
+            title "D01 - Navegación de carta y carrito local"
+            1: visitante -> mrSandwich.frontend.homePage "Abre la página principal index.html"
+            2: visitante -> mrSandwich.frontend.menuPage "Navega a Carta.html y selecciona un producto mediante el botón +"
+            4: mrSandwich.frontend.menuPage -> mrSandwich.frontend.cartLogic "Dispara el evento de agregar producto"
+            5: mrSandwich.frontend.cartLogic -> mrSandwich.frontend.menuPage "Actualiza contador, cantidades y total del modal"
+            autoLayout lr
+        }
+
+        dynamic mrSandwich "D02_Consulta_Inventario_API" "Consulta de inventario ejecutada directamente contra el backend, por ejemplo desde Swagger. No representa una llamada del frontend." {
+            title "D02 - Consulta REST del catálogo"
+            1: desarrollador -> mrSandwich.backend.swaggerDocs "Abre Swagger UI en /docs"
+            2: desarrollador -> mrSandwich.backend.inventoryRouter "Ejecuta GET /api/inventory/productos"
+            3: mrSandwich.backend.inventoryRouter -> mrSandwich.mongo "Consulta la colección inventory; inserta productos iniciales si está vacía"
+            4: mrSandwich.mongo -> mrSandwich.backend.inventoryRouter "Devuelve los documentos del catálogo"
+            5: mrSandwich.backend.inventoryRouter -> desarrollador "Devuelve la respuesta HTTP del endpoint"
+            autoLayout lr
+        }
+
+        dynamic mrSandwich "D03_Registro_Login" "Registro e inicio de sesión implementados en el router de clientes." {
+            title "D03 - Registro e inicio de sesión de cliente"
+            1: desarrollador -> mrSandwich.backend.clientsRouter "Envía POST /api/clients/register con nombre, correo y contraseña"
+            2: mrSandwich.backend.clientsRouter -> mrSandwich.mongo "Guarda el cliente en clients con contraseña hasheada mediante bcrypt"
+            3: mrSandwich.mongo -> mrSandwich.backend.clientsRouter "Confirma el resultado de persistencia"
+            4: desarrollador -> mrSandwich.backend.clientsRouter "Envía POST /api/clients/login con correo y contraseña"
+            5: mrSandwich.backend.clientsRouter -> mrSandwich.mongo "Busca el cliente para verificar las credenciales"
+            6: mrSandwich.mongo -> mrSandwich.backend.clientsRouter "Devuelve el registro del cliente"
+            7: mrSandwich.backend.clientsRouter -> desarrollador "Responde con access_token JWT y tipo bearer cuando la autenticación es válida"
+            autoLayout lr
+        }
+
+        dynamic mrSandwich "D04_Creacion_Pedido" "Creación de pedido protegida por JWT, mediante el endpoint REST del router orders." {
+            title "D04 - Creación de pedido con JWT"
+            1: desarrollador -> mrSandwich.backend.ordersRouter "Envía POST /api/orders/crear con Authorization: Bearer y el detalle del pedido; la ruta valida el JWT"
+            2: mrSandwich.backend.ordersRouter -> mrSandwich.mongo "Inserta pedido con email_cliente, items, total y estado pendiente"
+            3: mrSandwich.mongo -> mrSandwich.backend.ordersRouter "Devuelve el documento o identificador creado"
+            4: mrSandwich.backend.ordersRouter -> desarrollador "Responde con el resultado de creación y pedido_id"
+            autoLayout lr
+        }
+
+        dynamic mrSandwich "D05_Procesar_Pago" "Registro de pago simulado y actualización del estado del pedido mediante el router payments." {
+            title "D05 - Procesamiento de pago simulado"
+            1: desarrollador -> mrSandwich.backend.paymentsRouter "Envía POST /api/payments/procesar con pedido_id y monto_total"
+            2: mrSandwich.backend.paymentsRouter -> mrSandwich.mongo "Inserta el registro de pago en payments"
+            3: mrSandwich.backend.paymentsRouter -> mrSandwich.mongo "Actualiza el pedido asociado en orders a estado pagado"
+            4: mrSandwich.mongo -> mrSandwich.backend.paymentsRouter "Confirma las operaciones de persistencia"
+            5: mrSandwich.backend.paymentsRouter -> desarrollador "Devuelve el resultado del procesamiento"
+            autoLayout lr
+        }
+
+        dynamic mrSandwich "D06_Consulta_GraphQL" "Consulta de detalle de pedido mediante Strawberry GraphQL, leyendo directamente las colecciones orders y clients." {
+            title "D06 - Consulta GraphQL del detalle de pedido"
+            1: desarrollador -> mrSandwich.backend.graphqlEndpoint "Abre /graphql y ejecuta ver_detalle_pedido(pedido_id)"
+            2: mrSandwich.backend.graphqlEndpoint -> mrSandwich.mongo "Busca el pedido en la colección orders"
+            3: mrSandwich.mongo -> mrSandwich.backend.graphqlEndpoint "Devuelve los datos del pedido"
+            4: mrSandwich.backend.graphqlEndpoint -> mrSandwich.mongo "Busca los datos del cliente en clients"
+            5: mrSandwich.mongo -> mrSandwich.backend.graphqlEndpoint "Devuelve los datos del cliente"
+            6: mrSandwich.backend.graphqlEndpoint -> desarrollador "Compone PedidoGQL con cliente_info y devuelve la respuesta GraphQL"
+            autoLayout lr
+        }
+
+        deployment mrSandwich entornoLocal "D_DesarrolloLocal" "Despliegue local de navegador, proceso FastAPI y MongoDB." {
+            title "Despliegue - Desarrollo local de Mr. Sandwich"
+            include *
+            autoLayout lr
+        }
+
+        styles {
+            element "Person" {
+                shape person
+                background #54718A
+                color #FFFFFF
+            }
+            element "Actor" {
+                shape person
+                background #54718A
+                color #FFFFFF
+            }
+            element "ActorTecnico" {
+                shape person
+                background #6A7180
+                color #FFFFFF
+            }
+            element "Software System" {
+                background #173B5D
+                color #FFFFFF
+            }
+            element "SistemaEvaluado" {
+                background #173B5D
+                color #FFFFFF
+            }
+            element "Container" {
+                shape roundedbox
+                background #E4EDF5
+                color #173B5D
+            }
+            element "Frontend" {
+                shape webbrowser
+                background #D6EAF8
+                color #153E5B
+            }
+            element "Backend" {
+                background #DCE9E2
+                color #234C39
+            }
+            element "BaseDatos" {
+                shape cylinder
+                background #E8E5F0
+                color #40385F
+            }
+            element "Component" {
+                shape roundedbox
+                background #F0F4F7
+                color #263F54
+            }
+            element "Presentacion" {
+                background #D8EAF7
+                color #174260
+            }
+            element "LogicaFrontend" {
+                background #E6E1F2
+                color #453A64
+            }
+            element "Composicion" {
+                background #DDE8E1
+                color #244C39
+            }
+            element "ModuloREST" {
+                background #DFEAF2
+                color #21445E
+            }
+            element "ModuloGraphQL" {
+                background #E8E1F1
+                color #493A68
+            }
+            element "HerramientaPruebas" {
+                background #F5EBD8
+                color #604A20
+            }
+            element "SistemaExterno" {
+                background #F3EEE6
+                color #5C4B32
+                stroke #A99A82
+            }
+            element "Deployment Node" {
+                background #EDF1F5
+                color #253D52
+                stroke #A1B1BF
+            }
+            relationship "Relationship" {
+                color #60758A
+                thickness 2
+            }
+        }
+    }
+}
